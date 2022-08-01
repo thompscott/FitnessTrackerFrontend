@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { userLogin } from "../api";
 function Login( props ) {
-  const [token, setToken] = [props.token, props.setToken];
-  const [username, setUsername] = useState("");
+  const [token, setToken, username, setUsername] = [props.token, props.setToken, props.username, props.setUsername];
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
@@ -14,10 +13,22 @@ function Login( props ) {
     if (result.token) {
       setToken(result.token);
       localStorage.setItem("token", result.token);
+      localStorage.setItem("username", username);
     }
   };
 
   return (
+    (token ? (
+        <div>
+            <h2>Login</h2>
+            <h3>Logged in as {username}</h3>
+            <button
+            onClick={() =>{
+                localStorage.removeItem("token");
+                setToken("");
+            }}>Log Out</button>
+        </div>
+    ):
     <div>
       <form className="login" onSubmit={SubmitHandler}>
         <h2>Login</h2>
@@ -41,6 +52,7 @@ function Login( props ) {
         <p>{message}</p>
       </form>
     </div>
+    )
   );
 }
 
