@@ -5,17 +5,14 @@ import { userLogin } from '../api';
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [Error, setError] = useState('')
+    const [message, setMessage] = useState('')
 
     const SubmitHandler = async (e) => {
-        try {
             e.preventDefault()
             const result = await userLogin(username, password)
+            setMessage(result.message);
             console.log(result)
-        } catch (error) {
-            console.error(error)
-            setError('Username and Password Do Not Match')
-        }
+        
     };
 
     return (
@@ -28,6 +25,7 @@ function Login() {
                     value={username}
                     onChange={(e) => {
                         setUsername(e.target.value);
+                        console.log(username);
                     }} />
                 <input
                     type="text"
@@ -35,8 +33,10 @@ function Login() {
                     value={password}
                     onChange={(e) => {
                         setPassword(e.target.value);
+                        console.log(password);
                     }} />
                 <button type="submit">Login</button>
+                <p>{message}</p>
             </form>
         </div>
     )
