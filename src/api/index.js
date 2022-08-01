@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useResolvedPath } from 'react-router-dom';
 
-const url = "http://fitnesstrac-kr.herokuapp.com/api"
+const url = "https://desolate-wave-08610.herokuapp.com/api"
 
 export const userRegistration = async (username, password) => {
     console.log("User and Password", username, password);

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import { Home, Login, Register, Routines, Activities, MyActivities } from "./index";
 
 function App() {
+    const [ token, setToken ] = useState("");
     return (
         <div>
             <main>
@@ -15,13 +16,13 @@ function App() {
                     <Link className="tab" to="/activities/me">My Activities</Link>
                 </nav>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/routines" element={<Routines />} />
-                    <Route path="/activities" element={<Activities />} />
-                    <Route path="/activities/me" element={<MyActivities />} />
+                    <Route path="/" element={<Home token={token} />} />
+                    <Route path="/home" element={<Home token={token} />} />
+                    <Route path="/login" element={<Login token={token} setToken={setToken} />} />
+                    <Route path="/register" element={<Register token={token} setToken={setToken} />} />
+                    <Route path="/routines" element={<Routines token={token} />} />
+                    <Route path="/activities" element={<Activities token={token} />} />
+                    <Route path="/activities/me" element={<MyActivities token={token} />} />
                 </Routes>
             </main>
         </div>
