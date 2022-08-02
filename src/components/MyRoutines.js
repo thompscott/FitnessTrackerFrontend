@@ -1,7 +1,7 @@
 import { getUserRoutines } from "../api"
 import { useState, useEffect } from "react"
 import React from "react"
-import CreateRoutine from "./CreateRoutine";
+import { CreateRoutine } from "./index";
 
 function MyRoutines(props) {
     const [username, token] = [props.username, props.token];

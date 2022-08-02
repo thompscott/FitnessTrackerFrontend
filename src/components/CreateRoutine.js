@@ -1,9 +1,10 @@
 
 import React from "react";
+import { useState } from "react";
 
 function CreateRoutine () {
-    const name = 'name';
-    const goal = 'goal';
+  const [name, setName] = useState("");
+  const [goal, setGoal] = useState("");
 
     return(
         
@@ -15,7 +16,7 @@ function CreateRoutine () {
               placeholder="Name"
               value={name}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setName(e.target.value);
               }}
             />
             <input
@@ -23,11 +24,10 @@ function CreateRoutine () {
               placeholder="Goal"
               value={goal}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setGoal(e.target.value);
               }}
             />
             <button type="submit">Submit</button>
-            <p>{message}</p>
           </form>
         </div>
     );

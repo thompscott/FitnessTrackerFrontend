@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Home, Login, Register, Routines, Activities, MyRoutines } from "./index";
+import { Home, Login, Register, Routines, Activities, MyRoutines, } from "./index";
 
 function App() {
     const [ token, setToken ] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : "");

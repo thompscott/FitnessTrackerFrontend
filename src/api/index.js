@@ -58,3 +58,14 @@ export const getUserRoutines = async (username, token) => {
   return result
 }
 
+export const getActivities = async () => {
+  const response = await fetch (`${url}/activities`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const result = await response.json();
+  return result
+}
+
+export const postActivities = async () => {}
