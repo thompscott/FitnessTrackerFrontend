@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Home, Login, Register, Routines, Activities, MyActivities } from "./index";
+import { Home, Login, Register, Routines, Activities, MyRoutines } from "./index";
 
 function App() {
     const [ token, setToken ] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : "");
@@ -15,7 +15,7 @@ function App() {
                     <Link className="tab" to="/register">Register</Link>
                     <Link className="tab" to="/routines">Routines</Link>
                     <Link className="tab" to="/activities">Activities</Link>
-                    <Link className="tab" to="/activities/me">My Activities</Link>
+                    <Link className="tab" to="/routines/me">My Routines</Link>
                     </nav>
                     { (token ? (
                         <div>
@@ -38,7 +38,7 @@ function App() {
                     <Route path="/register" element={<Register token={token} setToken={setToken} username={username} setUsername={setUsername} />} />
                     <Route path="/routines" element={<Routines token={token} />} />
                     <Route path="/activities" element={<Activities token={token} />} />
-                    <Route path="/activities/me" element={<MyActivities token={token} />} />
+                    <Route path="/routines/me" element={<MyRoutines token={token} />} />
                 </Routes>
             </main>
         </div>

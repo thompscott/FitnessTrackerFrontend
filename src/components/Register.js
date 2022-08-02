@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { userRegistration } from "../api";
 function Register( props ) {
-  const [token, setToken] = [props.token, props.setToken];
-  const [username, setUsername] = useState("");
+  const [token, setToken, username, setUsername] = [props.token, props.setToken, props.username, props.setUsername];
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
