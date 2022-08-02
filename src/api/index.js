@@ -36,3 +36,5 @@ export const userLogin = async (username, password) => {
     const result = await response.json();
     return result;
   };
+
+  export const publicRoutines = async () =>
