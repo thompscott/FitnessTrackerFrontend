@@ -47,10 +47,11 @@ export const publicRoutines = async () => {
   return result;
 }
 
-export const getUserRoutines = async (username) => {
-  const response = await fetch(`${url}/user/${username}/routines`, {
+export const getUserRoutines = async (username, token) => {
+  const response = await fetch(`${url}/users/${username}/routines`, {
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   })
   const result = await response.json();

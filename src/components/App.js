@@ -38,7 +38,7 @@ function App() {
                     <Route path="/register" element={<Register token={token} setToken={setToken} username={username} setUsername={setUsername} />} />
                     <Route path="/routines" element={<Routines token={token} />} />
                     <Route path="/activities" element={<Activities token={token} />} />
-                    <Route path="/routines/me" element={<MyRoutines token={token} />} />
+                    <Route path="/routines/me" element={<MyRoutines token={token} username={username} />} />
                 </Routes>
             </main>
         </div>
