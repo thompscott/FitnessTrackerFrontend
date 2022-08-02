@@ -37,4 +37,14 @@ export const userLogin = async (username, password) => {
     return result;
   };
 
-  export const publicRoutines = async () =>
+  export const publicRoutines = async () => {
+    const response = await fetch(`${url}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const result = await response.json();
+    return result;
+  }
+
+  
