@@ -6,6 +6,8 @@ import { CreateRoutine, AttachActivities } from "./index";
 function MyRoutines(props) {
     const [username, token] = [props.username, props.token];
     const [routines, setRoutines] = useState([]);
+    const [modifyRoutine, setModifyRoutine] = useState(false);
+
     const userRout = async () => {
         if (token) {
             const userRoutines = await getUserRoutines(username, token)
@@ -13,11 +15,11 @@ function MyRoutines(props) {
             setRoutines(userRoutines)
         }
     }
-    useEffect(() => { userRout() }, [])
+    useEffect(() => { userRout() }, [modifyRoutine])
 
     return (
         <div>
-            <CreateRoutine token={token} />
+            <CreateRoutine token={token} setModifyRoutine={setModifyRoutine} />
             <AttachActivities />
             {routines.map((routine) => {
                 return (

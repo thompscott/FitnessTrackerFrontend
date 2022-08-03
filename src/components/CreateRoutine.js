@@ -4,17 +4,32 @@ import { useState } from "react";
 import { createRoutine } from "../api"
 
 function CreateRoutine(props) {
+  const [token, setModifyRoutine] = [props.token, props.setModifyRoutine]
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false)
-  const [token] = [props.token]
   const [message, setMessage] = useState("")
 
   async function submitHandler(event) {
     event.preventDefault()
+    setModifyRoutine(true);
     const result = await createRoutine(name, goal, isPublic, token)
-    if (result.message) {
-      setMessage(`There was an issue creating routine`)
+    console.log(result);
+    if (result.message === "duplicate key value violates unique constraint \"routines_name_key\"") {
+      setMessage(`A routine with name ${name} already exists`);
+    }
+    else {
+      if(result.message){
+        setMessage(result.message);
+      }
+      else {
+        setMessage("Routine Added");
+        setName("");
+        setGoal("");
+        setIsPublic(false);
+        setModifyRoutine(false);
+      }
+      
     }
 
     console.log(result)

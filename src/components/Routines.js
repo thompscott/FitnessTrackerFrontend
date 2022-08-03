@@ -4,6 +4,7 @@ import React from "react"
 
 function Routines() {
     const [routines, setRoutines] = useState([]);
+
     const pubRout = async () => {
         const allRoutines = await publicRoutines()
         setRoutines(allRoutines)
