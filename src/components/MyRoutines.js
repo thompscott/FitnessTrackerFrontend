@@ -23,7 +23,6 @@ function MyRoutines(props) {
   return (
     <div>
       <CreateRoutine token={token} setModifyRoutine={setModifyRoutine} />
-      <AttachActivities />
       {routines.map((routine) => {
         return (
           <div key={routine.id}>
@@ -45,6 +44,8 @@ function MyRoutines(props) {
                     </ul>
                     <button>Edit Activity</button>
                     <button>Delete Actvitiy</button>
+                    {/*ternary (modAttAct === activity.id) ? show <AttachActivities setModAttAct/> : edit/delete buttons */}
+                    {/*ternary (modEditAttAct === activity.id) ? show <EditAttActivities setModEditAttAct/> : edit/delte buttons */}
                   </div>
                 );
               })}
