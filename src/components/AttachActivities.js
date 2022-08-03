@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { attachActivities, getActivities } from "../api";
+import { attachActivities, getActivities, editActivity } from "../api";
 
 function AttachActivities(props) {
   const [count, setCount] = useState((props.count ? props.count : ''));
@@ -8,7 +8,7 @@ function AttachActivities(props) {
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
   const [activity, setActivity] = useState("");
-  const [rountineId, setModEditAttAct, modEditAttAct] = [props.routineId, props.setModEditAttAct, props.modEditAttAct];
+  const [routineId, setModEditAttAct, modEditAttAct, activityId, routineActivityId, token] = [props.routineId, props.setModEditAttAct, props.modEditAttAct, props.activityId, props.routineActivityId, props.token];
 
   async function setAllActs() {
     const allActs = await getActivities()
@@ -19,13 +19,26 @@ function AttachActivities(props) {
 
   async function submitHandler(event) {
     event.preventDefault();
-    const result = await attachActivities(
-      routineId,
-      activityId,
-      count,
-      duration
-    );
-    setMessage(result.message);
+    if (modEditAttAct) {
+      const result = await editActivity(
+        routineActivityId,
+        count,
+        duration,
+        token
+      );
+      console.log(result)
+      setMessage(result.message);
+    } else {
+      const result = await attachActivities(
+        routineId,
+        activityId,
+        count,
+        duration
+      );
+      console.log(result)
+      setMessage(result.message);
+    }
+    setModEditAttAct('')
   }
   //pass in routineId
 

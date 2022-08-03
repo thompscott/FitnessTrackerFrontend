@@ -19,7 +19,7 @@ function MyRoutines(props) {
     };
     useEffect(() => {
         userRout();
-    }, [modifyRoutine, modDelete]);
+    }, [modifyRoutine, modDelete, modEditAttAct]);
 
     return (
         <div>
@@ -45,7 +45,7 @@ function MyRoutines(props) {
                                         </ul>
 
                                         {((modEditAttAct === activity.routineActivityId) ?
-                                            <AttachActivities setModEditAttAct={setModEditAttAct} count={activity.count} duration={activity.duration} modEditAttAct={modEditAttAct} /> :
+                                            <AttachActivities setModEditAttAct={setModEditAttAct} count={activity.count} duration={activity.duration} modEditAttAct={modEditAttAct} routineId={routine.id} activityId={activity.id} routineActivityId={activity.routineActivityId} token={token} /> :
                                             (<div>
                                                 <button onClick={
                                                     () => {
