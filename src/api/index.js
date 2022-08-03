@@ -115,3 +115,15 @@ export const createRoutine = async (name, goal, isPublic, token) => {
   const result = await response.json()
   return result
 }
+
+export const deleteRoutine = async (routineId, token) => {
+  const response = await fetch(`${url}/routines/${routineId}`,{
+  headers: {
+    "Content-Type": "application/json",
+    'Authorization': `Bearer ${token}`
+  },
+  method: "DELETE",
+  })
+  const result = await response.json()
+  return result
+}

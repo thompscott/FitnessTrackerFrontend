@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { attachActivities, getActivities } from "../api";
 
-function AttachActivities() {
+function AttachActivities(props) {
   const [count, setCount] = useState("");
   const [duration, setDuration] = useState("");
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
   const [activity, setActivity] = useState("");
+  const [rountineId] = [props.routineId];
 
   async function setAllActs() {
     const allActs = await getActivities()
@@ -61,6 +62,7 @@ function AttachActivities() {
           }}
         />
         <button type="submit">Submit</button>
+        <button>Cancel</button>
         <p>{message}</p>
       </form>
     </div>
