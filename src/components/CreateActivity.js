@@ -5,14 +5,21 @@ import { postActivities } from "../api"
 function CreateActivity(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [modify, setModify] = [props.modify, props.setModify]
+  const [message, setMessage] = useState("")
+  const [setModify] = [props.setModify]
 
   async function submitHandler(event) {
     event.preventDefault();
     setModify(true)
     console.log(name, description)
     const result = await postActivities(name, description)
-    setModify(false)
+    setMessage(result.message);
+    if(!message) {
+      setMessage("Activity Added");
+    }
+    setName("");
+    setDescription("");
+    setModify(false);
     console.log(result)
 
   }
@@ -39,6 +46,7 @@ function CreateActivity(props) {
           }}
         />
         <button type="submit">Submit</button>
+        <p>{message}</p>
       </form>
     </div>
   );

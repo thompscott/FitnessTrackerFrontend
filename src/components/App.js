@@ -13,9 +13,9 @@ function App() {
                     <Link className="tab" to="/home">Home</Link>
                     <Link className="tab" to="/login">Login/Logout</Link>
                     <Link className="tab" to="/register">Register</Link>
-                    <Link className="tab" to="/routines">Routines</Link>
                     <Link className="tab" to="/activities">Activities</Link>
-                    <Link className="tab" to="/routines/me">My Routines</Link>
+                    <Link className="tab" to="/routines">Routines</Link>
+                    {(token ? <Link className="tab" to="/routines/me">My Routines</Link>: null)}
                     </nav>
                     { (token ? (
                         <div>

@@ -17,7 +17,7 @@ function Activities(props) {
 
     return (
         <div>
-            {(token ? < CreateActivity modify={modify} setModify={setModify} /> : null)}
+            {(token ? < CreateActivity setModify={setModify} /> : null)}
             {activities.map((activity) => {
                 console.log(activity, "this is activity")
                 return (
