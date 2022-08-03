@@ -58,3 +58,60 @@ export const getUserRoutines = async (username, token) => {
   return result
 }
 
+export const getActivities = async () => {
+  const response = await fetch(`${url}/activities`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const result = await response.json();
+  return result
+}
+
+export const postActivities = async (name, description) => {
+  const response = await fetch(`${url}/activities`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      'name': name,
+      'description': description,
+    })
+  })
+  const result = await response.json()
+  return result
+}
+
+export const attachActivities = async (routineId, activityId, count, duration) => {
+  const response = await fetch(`${url}/routines/${routineId}/activities`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      activityId: activityId,
+      count: count,
+      duration: duration
+    })
+  })
+  const result = await response.json()
+  return result
+}
+
+export const createRoutine = async (name, goal, isPublic, token) => {
+  const response = await fetch(`${url}/routines`, {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
+    },
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      goal: goal,
+      isPublic: isPublic
+    })
+  })
+  const result = await response.json()
+  return result
+}
