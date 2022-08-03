@@ -8,7 +8,8 @@ function MyRoutines(props) {
     const [routines, setRoutines] = useState([]);
     const [modifyRoutine, setModifyRoutine] = useState(false);
     const [modDelete, setModDelete] = useState(false);
-    const [modEditAttAct, setModEditAttAct] = useState(0)
+    const [modEditAttAct, setModEditAttAct] = useState(0);
+    const [modAttAct, setModAttAct] = useState(0);
 
     const userRout = async () => {
         if (token) {
@@ -67,14 +68,18 @@ function MyRoutines(props) {
                                 );
                             })}
                         </h2>
-                        <div>
+                        {((modEditAttAct === routine.id) ? <AttachActivities setModEditAttAct={setModEditAttAct} routineId={routine.id}/> :
+                        (<div>
                             <button>Edit</button>
                             <button onClick={async () => {
                                 await deleteRoutine(routine.id, token)
                                 setModDelete(!modDelete)
                             }}>Delete</button>
-                            <button>Attach Activities</button>
-                        </div>
+                            <button onClick={()=>{
+                                setModEditAttAct(routine.id);
+                            }}>Attach Activities</button>
+                        </div>))}
+                        
                     </div>
                 );
             })}

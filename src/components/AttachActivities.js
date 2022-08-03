@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { attachActivities, getActivities, editActivity } from "../api";
 
@@ -7,15 +7,17 @@ function AttachActivities(props) {
   const [duration, setDuration] = useState((props.duration ? props.duration : ''));
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
-  const [activity, setActivity] = useState("");
-  const [routineId, setModEditAttAct, modEditAttAct, activityId, routineActivityId, token] = [props.routineId, props.setModEditAttAct, props.modEditAttAct, props.activityId, props.routineActivityId, props.token];
+  const [activityId, setActivityId] = useState("");
+  const [routineId, setModEditAttAct, modEditAttAct, routineActivityId, token] = [props.routineId, props.setModEditAttAct, props.modEditAttAct, props.routineActivityId, props.token];
 
   async function setAllActs() {
     const allActs = await getActivities()
     setActivityList(allActs)
   }
 
-  setAllActs()
+  useEffect(()=>{
+    setAllActs();
+  }, [])
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -46,14 +48,15 @@ function AttachActivities(props) {
     <div>
       <form className="attachActivity" onSubmit={submitHandler}>
         <h2>Attach Activities</h2>
-        {(modEditAttAct === '') ? <select
+        {console.log(modEditAttAct)}
+        {(!modEditAttAct) ? <select
           name="activities"
-          value={activity}
-          onChange={(event) => setActivity(event.target.value)}
+          value={activityId}
+          onChange={(event) => setActivityId(event.target.value)}
         >
           <option value="Choose activity below">Choose activity below</option>
           {activityList.map((activity) => (
-            <option key={activity.id} value={activity.name}>
+            <option key={activity.id} value={activity.id}>
               {activity.name}
             </option>
           ))}
