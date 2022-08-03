@@ -59,7 +59,7 @@ export const getUserRoutines = async (username, token) => {
 }
 
 export const getActivities = async () => {
-  const response = await fetch (`${url}/activities`, {
+  const response = await fetch(`${url}/activities`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -68,4 +68,17 @@ export const getActivities = async () => {
   return result
 }
 
-export const postActivities = async () => {}
+export const postActivities = async (name, description) => {
+  const response = await fetch(`${url}/activities`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      'name': name,
+      'description': description,
+    })
+  })
+  const result = await response.json()
+  return result
+}
