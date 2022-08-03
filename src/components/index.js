@@ -7,3 +7,4 @@ export { default as MyRoutines} from "./MyRoutines";
 export { default as Routines} from "./Routines";
 export { default as CreateRoutine} from "./CreateRoutine";
 export { default as CreateActivity} from "./CreateActivity";
+export { default as AttachActivities} from "./AttachActivities";
