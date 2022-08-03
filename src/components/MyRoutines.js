@@ -1,13 +1,13 @@
 import { getUserRoutines } from "../api"
 import { useState, useEffect } from "react"
 import React from "react"
-import { CreateRoutine } from "./index";
+import { CreateRoutine, AttachActivities } from "./index";
 
 function MyRoutines(props) {
     const [username, token] = [props.username, props.token];
     const [routines, setRoutines] = useState([]);
     const userRout = async () => {
-        if(token){
+        if (token) {
             const userRoutines = await getUserRoutines(username, token)
             console.log(userRoutines)
             setRoutines(userRoutines)
@@ -17,7 +17,8 @@ function MyRoutines(props) {
 
     return (
         <div>
-            <CreateRoutine />
+            <CreateRoutine token={token} />
+            <AttachActivities />
             {routines.map((routine) => {
                 return (
                     <div key={routine.id}>

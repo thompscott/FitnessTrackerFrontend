@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { attachActivities } from "../api";
+import { attachActivities, getActivities } from "../api";
 
 function AttachActivities() {
   const [count, setCount] = useState("");
@@ -8,6 +8,13 @@ function AttachActivities() {
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
   const [activity, setActivity] = useState("");
+
+  async function setAllActs() {
+    const allActs = await getActivities()
+    setActivityList(allActs)
+  }
+
+  setAllActs()
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -30,7 +37,7 @@ function AttachActivities() {
           value={activity}
           onChange={(event) => setActivity(event.target.value)}
         >
-            <option value="Choose activity below">Choose activity below</option>
+          <option value="Choose activity below">Choose activity below</option>
           {activityList.map((activity) => (
             <option key={activity.id} value={activity.name}>
               {activity.name}
