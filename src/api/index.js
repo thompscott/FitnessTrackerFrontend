@@ -117,12 +117,40 @@ export const createRoutine = async (name, goal, isPublic, token) => {
 }
 
 export const deleteRoutine = async (routineId, token) => {
-  const response = await fetch(`${url}/routines/${routineId}`,{
-  headers: {
-    "Content-Type": "application/json",
-    'Authorization': `Bearer ${token}`
-  },
-  method: "DELETE",
+  const response = await fetch(`${url}/routines/${routineId}`, {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
+    },
+    method: "DELETE",
+  })
+  const result = await response.json()
+  return result
+}
+
+export const deleteActivity = async (routineActivityId, token) => {
+  const response = await fetch(`${url}/routine_activities/${routineActivityId}`, {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
+    },
+    method: "DELETE",
+  })
+  const result = await response.json()
+  return result
+}
+
+export const editActivity = async (routineActivityId, count, duration, token) => {
+  const response = await fetch(`${url}/routine_activities/${routineActivityId}`, {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
+    },
+    method: "PATCH",
+    body: JSON.stringify({
+      count: count,
+      duration: duration
+    }),
   })
   const result = await response.json()
   return result

@@ -3,12 +3,12 @@ import { useState } from "react";
 import { attachActivities, getActivities } from "../api";
 
 function AttachActivities(props) {
-  const [count, setCount] = useState("");
-  const [duration, setDuration] = useState("");
+  const [count, setCount] = useState((props.count ? props.count : ''));
+  const [duration, setDuration] = useState((props.duration ? props.duration : ''));
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
   const [activity, setActivity] = useState("");
-  const [rountineId] = [props.routineId];
+  const [rountineId, setModEditAttAct, modEditAttAct] = [props.routineId, props.setModEditAttAct, props.modEditAttAct];
 
   async function setAllActs() {
     const allActs = await getActivities()
@@ -33,7 +33,7 @@ function AttachActivities(props) {
     <div>
       <form className="attachActivity" onSubmit={submitHandler}>
         <h2>Attach Activities</h2>
-        <select
+        {(modEditAttAct === '') ? <select
           name="activities"
           value={activity}
           onChange={(event) => setActivity(event.target.value)}
@@ -44,7 +44,19 @@ function AttachActivities(props) {
               {activity.name}
             </option>
           ))}
-        </select>
+        </select> : null}
+        {/* <select
+          name="activities"
+          value={activity}
+          onChange={(event) => setActivity(event.target.value)}
+        >
+          <option value="Choose activity below">Choose activity below</option>
+          {activityList.map((activity) => (
+            <option key={activity.id} value={activity.name}>
+              {activity.name}
+            </option>
+          ))}
+        </select> */}
         <input
           type="text"
           placeholder="Count"
@@ -62,7 +74,11 @@ function AttachActivities(props) {
           }}
         />
         <button type="submit">Submit</button>
-        <button>Cancel</button>
+        <button onClick={
+          () => {
+            setModEditAttAct('')
+          }
+        }>Cancel</button>
         <p>{message}</p>
       </form>
     </div>
