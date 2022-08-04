@@ -21,11 +21,6 @@ function App() {
                         <div>
                        
                         <h3>Logged in as {username}</h3>
-                        <button
-                        onClick={() =>{
-                            localStorage.removeItem("token");
-                            setToken("");
-                        }}>Log Out</button>
                     </div>
                     ): (null))}
                     

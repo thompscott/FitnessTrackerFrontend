@@ -1,50 +1,98 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { attachActivities, getActivities } from "../api";
+import { attachActivities, getActivities, editActivity } from "../api";
 
-function AttachActivities() {
-  const [count, setCount] = useState("");
-  const [duration, setDuration] = useState("");
+function AttachActivities(props) {
+  const [count, setCount] = useState(props.count ? props.count : "");
+  const [duration, setDuration] = useState(
+    props.duration ? props.duration : ""
+  );
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
-  const [activity, setActivity] = useState("");
+  const [activityId, setActivityId] = useState("");
+  const [routineId, setModEditAttAct, modEditAttAct, routineActivityId, token] =
+    [
+      props.routineId,
+      props.setModEditAttAct,
+      props.modEditAttAct,
+      props.routineActivityId,
+      props.token,
+    ];
 
   async function setAllActs() {
-    const allActs = await getActivities()
-    setActivityList(allActs)
+    const allActs = await getActivities();
+    setActivityList(allActs);
   }
 
-  setAllActs()
+  useEffect(() => {
+    setAllActs();
+  }, []);
 
   async function submitHandler(event) {
     event.preventDefault();
-    const result = await attachActivities(
-      routineId,
-      activityId,
-      count,
-      duration
-    );
-    setMessage(result.message);
+    if (modEditAttAct) {
+      const result = await editActivity(
+        routineActivityId,
+        count,
+        duration,
+        token
+      );
+
+      if (result.message) {
+        setMessage(
+          "Cannot add activity (remember: activities cannot be attached twice)"
+        );
+      } else {
+        setModEditAttAct("");
+      }
+    } else {
+      const result = await attachActivities(
+        routineId,
+        activityId,
+        count,
+        duration
+      );
+
+      if (result.message) {
+        setMessage(
+          "Cannot add activity (remember: activities cannot be attached twice)"
+        );
+      } else {
+        setModEditAttAct("");
+      }
+    }
   }
-  //pass in routineId
 
   return (
     <div>
       <form className="attachActivity" onSubmit={submitHandler}>
-        <h2>Attach Activities</h2>
-        <select
-          name="activities"
-          value={activity}
-          onChange={(event) => setActivity(event.target.value)}
-        >
-          <option value="Choose activity below">Choose activity below</option>
-          {activityList.map((activity) => (
-            <option key={activity.id} value={activity.name}>
-              {activity.name}
-            </option>
-          ))}
-        </select>
+        {!modEditAttAct ? (
+          <div>
+            <h2>Attach Activities</h2>{" "}
+            <label htmlFor='activities'>Activities</label>
+            <select
+              id="activities"
+              name="activities"
+              value={activityId}
+              onChange={(event) => setActivityId(event.target.value)}
+            >
+              <option value="Choose activity below">
+                Choose activity below
+              </option>
+              {activityList.map((activity) => (
+                <option key={activity.id} value={activity.id}>
+                  {activity.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <h2>Edit Activities</h2>
+        )}
+        <label htmlFor='count'>Count</label>
         <input
+          id='count'
+          title="Count"
           type="text"
           placeholder="Count"
           value={count}
@@ -52,7 +100,10 @@ function AttachActivities() {
             setCount(e.target.value);
           }}
         />
+        <label htmlFor='duration'>Duration</label>
         <input
+          id="duration"
+          title="Duration"
           type="text"
           placeholder="Duration"
           value={duration}
@@ -61,6 +112,13 @@ function AttachActivities() {
           }}
         />
         <button type="submit">Submit</button>
+        <button
+          onClick={() => {
+            setModEditAttAct("");
+          }}
+        >
+          Cancel
+        </button>
         <p>{message}</p>
       </form>
     </div>

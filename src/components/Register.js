@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { userRegistration } from "../api";
-function Register( props ) {
+function Register(props) {
   const [token, setToken, username, setUsername] = [props.token, props.setToken, props.username, props.setUsername];
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -21,36 +21,40 @@ function Register( props ) {
       <h2>Register</h2>
       <h3>Logged in as {username}</h3>
       <button
-      onClick={() =>{
+        onClick={() => {
           localStorage.removeItem("token");
           setToken("");
-      }}>Log Out</button>
-  </div>): (
-    <div>
-    <form className="register" onSubmit={SubmitHandler}>
-      <h2>Register</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-      <button type="submit">Register</button>
-      <p>{message}</p>
-    </form>
-  </div>
-  ))
-    
+        }}>Log Out</button>
+    </div>) : (
+      <div>
+        <form className="register" onSubmit={SubmitHandler}>
+          <h2>Register</h2>
+          <label htmlFor='username'>Username</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="text"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <button type="submit">Register</button>
+          <p>{message}</p>
+        </form>
+      </div>
+    ))
+
   );
 }
 export default Register;

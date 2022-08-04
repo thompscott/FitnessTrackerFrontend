@@ -19,7 +19,6 @@ function Activities(props) {
         <div>
             {(token ? < CreateActivity setModify={setModify} /> : null)}
             {activities.map((activity) => {
-                console.log(activity, "this is activity")
                 return (
                     <div key={activity.id}>
                         <h1>{activity.name}</h1>
