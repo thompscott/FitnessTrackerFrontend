@@ -32,43 +32,48 @@ function EditRoutine(props) {
         <div>
             <form className="editRoutine" onSubmit={submitHandler}>
                 <h2>Edit Routine</h2>
-                <label htmlFor='name'>Name</label>
-                <input
-                    id='name'
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => {
-                        setName(e.target.value);
-                    }}
-                />
-                <label htmlFor='goal'>Goal</label>
-                <input
-                    id="goal"
-                    type="text"
-                    placeholder="Goal"
-                    value={goal}
-                    onChange={(e) => {
-                        setGoal(e.target.value);
-                    }}
-                />
-                <label htmlFor="visibility">Visibility</label>
-                <select
-                    id="visibility"
-                    name="visibility"
-                    value={isPublic}
-                    onChange={(event) => setIsPublic(event.target.value)}>
-                    <option value={false}>Private</option>
-                    <option value={true}>Public</option>
-                </select>
-                <button type="submit">Submit</button>
-                <button onClick={()=>{
-                    setModRout(0);
-                }
-    
-                    
-                }>Cancel</button>
-                <p>{message}</p>
+                <fieldset>
+                    <label htmlFor='name'>Name</label>
+                    <input
+                        id='name'
+                        type="text"
+                        placeholder="Name"
+                        value={name}
+                        onChange={(e) => {
+                            setName(e.target.value);
+                        }}
+                    /></fieldset>
+                <fieldset>
+                    <label htmlFor='goal'>Goal</label>
+                    <input
+                        id="goal"
+                        type="text"
+                        placeholder="Goal"
+                        value={goal}
+                        onChange={(e) => {
+                            setGoal(e.target.value);
+                        }}
+                    /></fieldset>
+                <fieldset>
+                    <label htmlFor="visibility">Visibility</label>
+                    <select
+                        id="visibility"
+                        name="visibility"
+                        value={isPublic}
+                        onChange={(event) => setIsPublic(event.target.value)}>
+                        <option value={false}>Private</option>
+                        <option value={true}>Public</option>
+                    </select></fieldset>
+                <fieldset>
+                    <button type="submit">Submit</button>
+                    <button onClick={() => {
+                        setModRout(0);
+                    }
+
+
+                    }>Cancel</button>
+                    <p>{message}</p>
+                </fieldset>
             </form>
         </div>
     );
