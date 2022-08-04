@@ -22,7 +22,7 @@ function MyRoutines(props) {
     }, [modifyRoutine, modDelete, modEditAttAct, modRout]);
 
     return (
-        <div>
+        <div className="myRoutines">
             <CreateRoutine token={token} setModifyRoutine={setModifyRoutine} />
             {routines.map((routine) => {
                 return (
