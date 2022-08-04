@@ -70,7 +70,9 @@ function AttachActivities(props) {
         {!modEditAttAct ? (
           <div>
             <h2>Attach Activities</h2>{" "}
+            <label htmlFor='activities'>Activities</label>
             <select
+              id="activities"
               name="activities"
               value={activityId}
               onChange={(event) => setActivityId(event.target.value)}
@@ -88,7 +90,10 @@ function AttachActivities(props) {
         ) : (
           <h2>Edit Activities</h2>
         )}
+        <label htmlFor='count'>Count</label>
         <input
+          id='count'
+          title="Count"
           type="text"
           placeholder="Count"
           value={count}
@@ -96,7 +101,10 @@ function AttachActivities(props) {
             setCount(e.target.value);
           }}
         />
+        <label htmlFor='duration'>Duration</label>
         <input
+          id="duration"
+          title="Duration"
           type="text"
           placeholder="Duration"
           value={duration}

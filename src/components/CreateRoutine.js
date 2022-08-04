@@ -19,7 +19,7 @@ function CreateRoutine(props) {
       setMessage(`A routine with name ${name} already exists`);
     }
     else {
-      if(result.message){
+      if (result.message) {
         setMessage(result.message);
       }
       else {
@@ -29,7 +29,7 @@ function CreateRoutine(props) {
         setIsPublic(false);
         setModifyRoutine(false);
       }
-      
+
     }
 
     console.log(result)
@@ -40,7 +40,9 @@ function CreateRoutine(props) {
     <div>
       <form className="createRoutine" onSubmit={submitHandler}>
         <h2>Create Routine</h2>
+        <label htmlFor='name'>Name</label>
         <input
+          id='name'
           type="text"
           placeholder="Name"
           value={name}
@@ -48,7 +50,9 @@ function CreateRoutine(props) {
             setName(e.target.value);
           }}
         />
+        <label htmlFor='goal'>Goal</label>
         <input
+          id="goal"
           type="text"
           placeholder="Goal"
           value={goal}
@@ -56,7 +60,9 @@ function CreateRoutine(props) {
             setGoal(e.target.value);
           }}
         />
+        <label htmlFor="visibility">Visibility</label>
         <select
+          id="visibility"
           name="visibility"
           value={isPublic}
           onChange={(event) => setIsPublic(event.target.value)}>

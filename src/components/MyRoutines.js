@@ -1,7 +1,7 @@
-import { getUserRoutines, deleteRoutine, deleteActivity } from "../api";
+import { getUserRoutines, deleteRoutine, deleteActivity, editRoutine } from "../api";
 import { useState, useEffect } from "react";
 import React from "react";
-import { CreateRoutine, AttachActivities } from "./index";
+import { CreateRoutine, AttachActivities, EditRoutine } from "./index";
 
 function MyRoutines(props) {
     const [username, token] = [props.username, props.token];
@@ -9,7 +9,7 @@ function MyRoutines(props) {
     const [modifyRoutine, setModifyRoutine] = useState(false);
     const [modDelete, setModDelete] = useState(false);
     const [modEditAttAct, setModEditAttAct] = useState(0);
-    const [modAttAct, setModAttAct] = useState(0);
+    const [modRout, setModRout] = useState(0);
 
     const userRout = async () => {
         if (token) {
@@ -68,18 +68,22 @@ function MyRoutines(props) {
                                 );
                             })}
                         </h2>
-                        {((modEditAttAct === routine.id) ? <AttachActivities setModEditAttAct={setModEditAttAct} routineId={routine.id}/> :
-                        (<div>
-                            <button>Edit</button>
+                        {((modEditAttAct === routine.id) ? <AttachActivities setModEditAttAct={setModEditAttAct} routineId={routine.id} /> : null)}
+                        {((modRout === routine.id) ? <EditRoutine token={token} setModRout={setModRout} name={routine.name} goal={routine.goal} isPublic={routine.isPublic} routineId={routine.id} /> : null)}
+                        {((modEditAttAct === routine.id || modRout === routine.id) ? null : <div>
+                            <button onClick={async () => {
+                                setModRout(routine.id)
+                            }}>Edit</button>
                             <button onClick={async () => {
                                 await deleteRoutine(routine.id, token)
                                 setModDelete(!modDelete)
                             }}>Delete</button>
-                            <button onClick={()=>{
+                            <button onClick={() => {
                                 setModEditAttAct(routine.id);
                             }}>Attach Activities</button>
-                        </div>))}
-                        
+                        </div>)}
+
+
                     </div>
                 );
             })}

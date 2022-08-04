@@ -14,7 +14,7 @@ function CreateActivity(props) {
     console.log(name, description)
     const result = await postActivities(name, description)
     setMessage(result.message);
-    if(!message) {
+    if (!message) {
       setMessage("Activity Added");
     }
     setName("");
@@ -29,7 +29,9 @@ function CreateActivity(props) {
     <div>
       <form className="createActivity" onSubmit={submitHandler}>
         <h2>Create Activity</h2>
+        <label htmlFor='name'>Name</label>
         <input
+          id="name"
           type="text"
           placeholder="Name"
           value={name}
@@ -37,7 +39,9 @@ function CreateActivity(props) {
             setName(e.target.value);
           }}
         />
+        <label htmlFor='description'>Description</label>
         <input
+          id="description"
           type="text"
           placeholder="Description"
           value={description}
