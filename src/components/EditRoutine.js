@@ -14,7 +14,6 @@ function EditRoutine(props) {
     async function submitHandler(event) {
         event.preventDefault()
         const result = await editRoutine(routineId, name, goal, isPublic, token)
-        console.log(result);
         if (result.message === "duplicate key value violates unique constraint \"routines_name_key\"") {
             setMessage(`A routine with name ${name} already exists`);
         }
@@ -26,10 +25,7 @@ function EditRoutine(props) {
                 setMessage("Routine Changed");
                 setModRout(0);
             }
-
         }
-
-        console.log(result)
     }
 
     return (
@@ -66,8 +62,11 @@ function EditRoutine(props) {
                     <option value={true}>Public</option>
                 </select>
                 <button type="submit">Submit</button>
-                <button onClick={
-                    setModRout(0)
+                <button onClick={()=>{
+                    setModRout(0);
+                }
+    
+                    
                 }>Cancel</button>
                 <p>{message}</p>
             </form>

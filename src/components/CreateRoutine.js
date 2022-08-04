@@ -14,7 +14,6 @@ function CreateRoutine(props) {
     event.preventDefault()
     setModifyRoutine(true);
     const result = await createRoutine(name, goal, isPublic, token)
-    console.log(result);
     if (result.message === "duplicate key value violates unique constraint \"routines_name_key\"") {
       setMessage(`A routine with name ${name} already exists`);
     }
@@ -29,10 +28,7 @@ function CreateRoutine(props) {
         setIsPublic(false);
         setModifyRoutine(false);
       }
-
     }
-
-    console.log(result)
   }
 
   return (

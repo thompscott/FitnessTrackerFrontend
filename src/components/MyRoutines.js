@@ -14,13 +14,12 @@ function MyRoutines(props) {
     const userRout = async () => {
         if (token) {
             const userRoutines = await getUserRoutines(username, token);
-            console.log(userRoutines);
             setRoutines(userRoutines);
         }
     };
     useEffect(() => {
         userRout();
-    }, [modifyRoutine, modDelete, modEditAttAct]);
+    }, [modifyRoutine, modDelete, modEditAttAct, modRout]);
 
     return (
         <div>
@@ -51,8 +50,6 @@ function MyRoutines(props) {
                                                 <button onClick={
                                                     () => {
                                                         setModEditAttAct(activity.routineActivityId)
-                                                        console.log(activity.routineActivityId)
-                                                        console.log(modEditAttAct)
                                                     }
                                                 }>Edit Activity</button>
                                                 <button onClick={
@@ -62,16 +59,14 @@ function MyRoutines(props) {
                                                     }
                                                 }>Delete Activity</button>
                                             </div>))}
-                                        {/*ternary (modAttAct === activity.id) ? show <AttachActivities setModAttAct/> : edit/delete buttons */}
-                                        {/*ternary (modEditAttAct === activity.id) ? show <EditAttActivities setModEditAttAct/> : edit/delte buttons */}
                                     </div>
                                 );
                             })}
                         </h2>
                         {((modEditAttAct === routine.id) ? <AttachActivities setModEditAttAct={setModEditAttAct} routineId={routine.id} /> : null)}
-                        {((modRout === routine.id) ? <EditRoutine token={token} setModRout={setModRout} name={routine.name} goal={routine.goal} isPublic={routine.isPublic} routineId={routine.id} /> : null)}
+                        {((modRout === routine.id) ?  <><EditRoutine token={token} setModRout={setModRout} name={routine.name} goal={routine.goal} isPublic={routine.isPublic} routineId={routine.id} />{console.log(modRout)}</>: null)}
                         {((modEditAttAct === routine.id || modRout === routine.id) ? null : <div>
-                            <button onClick={async () => {
+                            <button onClick={() => {
                                 setModRout(routine.id)
                             }}>Edit</button>
                             <button onClick={async () => {

@@ -11,7 +11,6 @@ function CreateActivity(props) {
   async function submitHandler(event) {
     event.preventDefault();
     setModify(true)
-    console.log(name, description)
     const result = await postActivities(name, description)
     setMessage(result.message);
     if (!message) {
@@ -20,8 +19,6 @@ function CreateActivity(props) {
     setName("");
     setDescription("");
     setModify(false);
-    console.log(result)
-
   }
 
   return (

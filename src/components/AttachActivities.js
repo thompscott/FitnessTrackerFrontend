@@ -66,7 +66,6 @@ function AttachActivities(props) {
   return (
     <div>
       <form className="attachActivity" onSubmit={submitHandler}>
-        {console.log(modEditAttAct)}
         {!modEditAttAct ? (
           <div>
             <h2>Attach Activities</h2>{" "}
