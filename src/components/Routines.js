@@ -15,7 +15,7 @@ function Routines() {
         <div>
             {routines.map((routine) => {
                 return (
-                    <div key={routine.id}>
+                    <div className="displayCard" key={routine.id}>
                         <h1>{routine.name}</h1>
                         <h2>Goal: {routine.goal}</h2>
                         <h2>Creator: {routine.creatorName}</h2>

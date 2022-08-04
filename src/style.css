@@ -9,6 +9,7 @@ main {
     display: flex;
     flex-direction: column;
     background-color: #101010;
+    border-color:#8000A7;
 
 }
 /*Header*/
@@ -40,8 +41,8 @@ main {
     font-size: 25px;
     padding: 10px;
 
-}
 
+}
 nav {
     display: flex;
     color: red;
@@ -78,10 +79,11 @@ form h2 {
 fieldset {
     border: none;
     padding: 5px;
+    display: inline-block;
+    text-align: center;
 }
 
 fieldset>label {
-    
     margin: 10px;
 }
 
@@ -94,10 +96,15 @@ button {
     border: solid #954795 1px;
 
 }
+button:hover {
+    color:#954795;
+
+}
 input {
     background-color: #954795;
     border: solid #954795 3x;
     color:aliceblue;
+    display: inline-block;
 }
 ::placeholder {
     color: aliceblue;
@@ -113,4 +120,16 @@ select {
     display:flex;
     flex-direction: column;
     align-items: center;
+}
+/*Activities*/
+.displayCard {
+    border: solid;
+    padding: 5px;
+    margin: 20px;
+    background-color: black;
+    width: 80vw;
+}
+.displayCard>h1 {
+    border-bottom: solid;
+    padding: 5px;
 }
