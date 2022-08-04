@@ -8,7 +8,7 @@ function App() {
     return (
         <div>
             <main>
-                <div>
+                <div className="header">
                     <nav>
                     <Link className="tab" to="/home">Home</Link>
                     <Link className="tab" to="/login">Login/Logout</Link>
@@ -18,7 +18,7 @@ function App() {
                     {(token ? <Link className="tab" to="/routines/me">My Routines</Link>: null)}
                     </nav>
                     { (token ? (
-                        <div>
+                        <div className="currentUser">
                        
                         <h3>Logged in as {username}</h3>
                     </div>
