@@ -68,7 +68,7 @@ form {
     border: solid #8000A7;
     background-color: #000000;
     padding: 5px;
-    width: 80vw;
+    width: 75vw;
     margin: 20px;
 }
 
@@ -132,4 +132,36 @@ select {
 .displayCard>h1 {
     border-bottom: solid;
     padding: 5px;
+}
+.activityCard{
+    border-top: solid;
+    border-bottom: solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+.activityCard>h2{
+    text-decoration: underline;
+}
+ul {
+    list-style-type: none;
+    margin-left: 10px;
+    text-decoration: none;
+}
+li {
+    font-size: 18px;
+}
+.routines{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.activities{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.myRoutinesBttn{
+    display: flex;
+    
 }

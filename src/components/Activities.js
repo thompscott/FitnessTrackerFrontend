@@ -16,7 +16,7 @@ function Activities(props) {
     useEffect(() => { acts() }, [modify])
 
     return (
-        <div >
+        <div className="activities">
             {(token ? < CreateActivity setModify={setModify} /> : null)}
             {activities.map((activity) => {
                 return (
