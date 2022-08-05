@@ -55,7 +55,7 @@ function AttachActivities(props) {
 
       if (result.message) {
         setMessage(
-          "Cannot add activity (remember: activities cannot be attached twice)"
+          "Cannot add activity (remember: activities cannot be attached twice, count and duration must be numbers)"
         );
       } else {
         setModEditAttAct("");

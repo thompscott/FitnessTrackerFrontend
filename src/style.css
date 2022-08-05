@@ -129,14 +129,7 @@ select {
     color: aliceblue;
 }
 
-/*My Routines*/
-.myRoutines {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/*Activities*/
+/*Cards*/
 .displayCard {
     border: solid;
     padding: 5px;
@@ -172,6 +165,18 @@ li {
     font-size: 18px;
 }
 
+/*Pages*/
+.myRoutines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myRoutinesBttn {
+    display: flex;
+
+}
+
 .routines {
     display: flex;
     flex-direction: column;
@@ -184,10 +189,7 @@ li {
     align-items: center;
 }
 
-.myRoutinesBttn {
-    display: flex;
 
-}
 
 .homeScreen {
     height: 50vh;
