@@ -15,11 +15,14 @@ function Routines() {
         <div>
             {routines.map((routine) => {
                 return (
-                    <div key={routine.id}>
+                    <div className="routines">
+                        <div className="displayCard" key={routine.id}>
                         <h1>{routine.name}</h1>
                         <h2>Goal: {routine.goal}</h2>
                         <h2>Creator: {routine.creatorName}</h2>
-                        <h2>Activities:{routine.activities.map((activity) => {
+                        <div className="activityCard">
+                        <h2 >Activities: </h2>
+                        {routine.activities.map((activity) => {
                             return (
                                 <ul key={activity.id}>
                                     <li>{activity.name}</li>
@@ -30,7 +33,11 @@ function Routines() {
                                     </ul>
                                 </ul>
                             )
-                        })}</h2>
+                        })}
+                        </div>
+                    </div>
+                    
+                        
 
 
                     </div>

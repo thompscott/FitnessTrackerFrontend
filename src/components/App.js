@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import { Home, Login, Register, Routines, Activities, MyRoutines, } from "./index";
+import "../style.css"
 
 function App() {
     const [ token, setToken ] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : "");
@@ -8,7 +9,7 @@ function App() {
     return (
         <div>
             <main>
-                <div>
+                <div className="header">
                     <nav>
                     <Link className="tab" to="/home">Home</Link>
                     <Link className="tab" to="/login">Login/Logout</Link>
@@ -18,7 +19,7 @@ function App() {
                     {(token ? <Link className="tab" to="/routines/me">My Routines</Link>: null)}
                     </nav>
                     { (token ? (
-                        <div>
+                        <div className="currentUser">
                        
                         <h3>Logged in as {username}</h3>
                     </div>

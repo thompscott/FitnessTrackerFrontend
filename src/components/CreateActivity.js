@@ -26,28 +26,34 @@ function CreateActivity(props) {
     <div>
       <form className="createActivity" onSubmit={submitHandler}>
         <h2>Create Activity</h2>
-        <label htmlFor='name'>Name</label>
-        <input
-          id="name"
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <label htmlFor='description'>Description</label>
-        <input
-          id="description"
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-        />
-        <button type="submit">Submit</button>
-        <p>{message}</p>
+        <fieldset>
+          <label htmlFor='name'>Name</label>
+          <input
+            minLength={1}
+            id="name"
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          /></fieldset>
+        <fieldset>
+          <label htmlFor='description'>Description</label>
+          <input
+            minLength={1}
+            id="description"
+            type="text"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          /></fieldset>
+        <fieldset>
+          <button type="submit">Submit</button>
+          <p>{message}</p>
+        </fieldset>
       </form>
     </div>
   );

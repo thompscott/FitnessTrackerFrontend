@@ -16,11 +16,11 @@ function Activities(props) {
     useEffect(() => { acts() }, [modify])
 
     return (
-        <div>
+        <div className="activities">
             {(token ? < CreateActivity setModify={setModify} /> : null)}
             {activities.map((activity) => {
                 return (
-                    <div key={activity.id}>
+                    <div className="displayCard" key={activity.id}>
                         <h1>{activity.name}</h1>
                         <h2>{activity.description}</h2>
                     </div>

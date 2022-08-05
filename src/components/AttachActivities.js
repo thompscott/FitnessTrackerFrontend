@@ -55,7 +55,7 @@ function AttachActivities(props) {
 
       if (result.message) {
         setMessage(
-          "Cannot add activity (remember: activities cannot be attached twice)"
+          "Cannot add activity (remember: activities cannot be attached twice, count and duration must be numbers)"
         );
       } else {
         setModEditAttAct("");
@@ -69,57 +69,65 @@ function AttachActivities(props) {
         {!modEditAttAct ? (
           <div>
             <h2>Attach Activities</h2>{" "}
-            <label htmlFor='activities'>Activities</label>
-            <select
-              id="activities"
-              name="activities"
-              value={activityId}
-              onChange={(event) => setActivityId(event.target.value)}
-            >
-              <option value="Choose activity below">
-                Choose activity below
-              </option>
-              {activityList.map((activity) => (
-                <option key={activity.id} value={activity.id}>
-                  {activity.name}
+            <fieldset>
+              <label htmlFor='activities'>Activities</label>
+              <select
+                id="activities"
+                name="activities"
+                value={activityId}
+                onChange={(event) => setActivityId(event.target.value)}
+              >
+                <option value="Choose activity below">
+                  Choose activity below
                 </option>
-              ))}
-            </select>
+                {activityList.map((activity) => (
+                  <option key={activity.id} value={activity.id}>
+                    {activity.name}
+                  </option>
+                ))}
+              </select>
+            </fieldset>
           </div>
         ) : (
           <h2>Edit Activities</h2>
         )}
-        <label htmlFor='count'>Count</label>
-        <input
-          id='count'
-          title="Count"
-          type="text"
-          placeholder="Count"
-          value={count}
-          onChange={(e) => {
-            setCount(e.target.value);
-          }}
-        />
-        <label htmlFor='duration'>Duration</label>
-        <input
-          id="duration"
-          title="Duration"
-          type="text"
-          placeholder="Duration"
-          value={duration}
-          onChange={(e) => {
-            setDuration(e.target.value);
-          }}
-        />
-        <button type="submit">Submit</button>
-        <button
-          onClick={() => {
-            setModEditAttAct("");
-          }}
-        >
-          Cancel
-        </button>
-        <p>{message}</p>
+        <fieldset>
+          <label htmlFor='count'>Count</label>
+          <input
+            minLength={1}
+            id='count'
+            title="Count"
+            type="text"
+            placeholder="Count"
+            value={count}
+            onChange={(e) => {
+              setCount(e.target.value);
+            }}
+          /></fieldset>
+        <fieldset>
+          <label htmlFor='duration'>Duration</label>
+          <input
+            minLength={1}
+            id="duration"
+            title="Duration"
+            type="text"
+            placeholder="Duration"
+            value={duration}
+            onChange={(e) => {
+              setDuration(e.target.value);
+            }}
+          /></fieldset>
+        <fieldset>
+          <button type="submit">Submit</button>
+          <button
+            onClick={() => {
+              setModEditAttAct("");
+            }}
+          >
+            Cancel
+          </button>
+          <p>{message}</p>
+        </fieldset>
       </form>
     </div>
   );

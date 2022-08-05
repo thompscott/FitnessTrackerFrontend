@@ -17,7 +17,7 @@ function Register(props) {
     }
   };
   return (
-    (token ? (<div>
+    (token ? (<div className="registerPage">
       <h2>Register</h2>
       <h3>Logged in as {username}</h3>
       <button
@@ -26,31 +26,37 @@ function Register(props) {
           setToken("");
         }}>Log Out</button>
     </div>) : (
-      <div>
+      <div className="registerPage">
         <form className="register" onSubmit={SubmitHandler}>
           <h2>Register</h2>
-          <label htmlFor='username'>Username</label>
-          <input
-            id="username"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="text"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <button type="submit">Register</button>
-          <p>{message}</p>
+          <fieldset>
+            <label htmlFor='username'>Username</label>
+            <input
+              minLength={1}
+              id="username"
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            /></fieldset>
+          <fieldset>
+            <label htmlFor="password">Password</label>
+            <input
+              minLength={1}
+              id="password"
+              type="text"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            /></fieldset>
+          <fieldset>
+            <button type="submit">Register</button>
+            <p>{message}</p>
+          </fieldset>
         </form>
       </div>
     ))

@@ -19,7 +19,7 @@ function Login(props) {
 
     return (
         (token ? (
-            <div>
+            <div className="loginPage">
                 <h2>Login</h2>
                 <h3>Logged in as {username}</h3>
                 <button
@@ -29,31 +29,37 @@ function Login(props) {
                     }}>Log Out</button>
             </div>
         ) :
-            <div>
+            <div className="loginPage">
                 <form className="login" onSubmit={SubmitHandler}>
                     <h2>Login</h2>
-                    <label htmlFor='username'>Username</label>
-                    <input
-                        id="username"
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => {
-                            setUsername(e.target.value);
-                        }}
-                    />
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        type="text"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}
-                    />
-                    <button type="submit">Login</button>
-                    <p>{message}</p>
+                    <fieldset>
+                        <label htmlFor='username'>Username</label>
+                        <input
+                            minLength={1}
+                            id="username"
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+                            }}
+                        /></fieldset>
+                    <fieldset>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            minLength={1}
+                            id="password"
+                            type="text"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                        /></fieldset>
+                    <fieldset>
+                        <button type="submit">Login</button>
+                        <p>{message}</p>
+                    </fieldset>
                 </form>
             </div>
         )

@@ -1,0 +1,214 @@
+/*Whole Document*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #8000A7;
+}
+
+html {
+    height: 100vh;
+    background-color: #101010;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: #101010;
+    border-color: #8000A7;
+
+}
+
+/*Header*/
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #000000;
+    border-bottom: solid #8000A7;
+}
+
+.tab {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 30px;
+    border-right: solid #8000A7;
+    color: #8000A7
+}
+
+.tab:hover {
+    background-color: #8000A7;
+    color: #000000;
+}
+
+.currentUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 10px;
+
+
+}
+
+nav {
+    display: flex;
+    color: red;
+    background-color: rgb(0, 0, 0);
+}
+
+@media (max-width:1200px) {
+    .header {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .tab {
+        width: 100%;
+    }
+
+}
+
+/*Forms*/
+form {
+    border: solid #8000A7;
+    background-color: #000000;
+    padding: 5px;
+    width: 75vw;
+    margin: 20px;
+}
+
+form h2 {
+    border-bottom: solid #8000A7;
+}
+
+fieldset {
+    border: none;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+fieldset>label {
+    margin: 10px;
+}
+
+
+button {
+    background-color: #150015;
+    height: 40px;
+    width: 60px;
+    margin: 10px;
+    border: solid #954795 1px;
+
+}
+
+button:hover {
+    color: #954795;
+
+}
+
+input {
+    background-color: #954795;
+    border: solid #954795 3x;
+    color: aliceblue;
+    display: inline-block;
+}
+
+::placeholder {
+    color: aliceblue;
+    opacity: 0.6;
+}
+
+select {
+    background-color: #954795;
+    border: solid #954795 3x;
+    color: aliceblue;
+}
+
+/*Cards*/
+.displayCard {
+    border: solid;
+    padding: 5px;
+    margin: 20px;
+    background-color: black;
+    width: 80vw;
+}
+
+.displayCard>h1 {
+    border-bottom: solid;
+    padding: 5px;
+}
+
+.activityCard {
+    border-top: solid;
+    border-bottom: solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.activityCard>h2 {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+li {
+    font-size: 18px;
+}
+
+/*Pages*/
+.myRoutines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myRoutinesBttn {
+    display: flex;
+
+}
+
+.routines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.homeScreen {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
