@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Home, Login, Register, Routines, Activities, MyRoutines, } from "./index";
+import { Home, Login, Register, Routines, Activities, MyRoutines, UserRoutines } from "./index";
 import "../style.css"
 
+
 function App() {
+    const [seeUser, setSeeUser] = useState("");
     const [ token, setToken ] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : "");
     const [username, setUsername] = useState(localStorage.getItem("username") ? localStorage.getItem("username") : "");
     return (
@@ -32,9 +34,11 @@ function App() {
                     <Route path="/home" element={<Home token={token} />} />
                     <Route path="/login" element={<Login token={token} setToken={setToken} username={username} setUsername={setUsername} />} />
                     <Route path="/register" element={<Register token={token} setToken={setToken} username={username} setUsername={setUsername} />} />
-                    <Route path="/routines" element={<Routines token={token} />} />
+                    <Route path="/routines" element={<Routines token={token} seeUser={seeUser} setSeeUser={setSeeUser} />} />
                     <Route path="/activities" element={<Activities token={token} />} />
                     <Route path="/routines/me" element={<MyRoutines token={token} username={username} />} />
+                    <Route path="/routines/user" element={ seeUser ?<UserRoutines seeUser={seeUser} /> : <Routines token={token} seeUser={seeUser} setSeeUser={setSeeUser} />} />
+
                 </Routes>
             </main>
         </div>

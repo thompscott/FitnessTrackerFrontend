@@ -1,9 +1,12 @@
 import { publicRoutines } from "../api"
-import { useState, useEffect } from "react"
+import { useState, useEffect, } from "react"
 import React from "react"
+import { Link, Route } from "react-router-dom";
 
-function Routines() {
+
+function Routines(props) {
     const [routines, setRoutines] = useState([]);
+    const [seeUser, setSeeUser] = [props.seeUser, props.setSeeUser];
 
     const pubRout = async () => {
         const allRoutines = await publicRoutines()
@@ -15,11 +18,13 @@ function Routines() {
         <div>
             {routines.map((routine) => {
                 return (
-                    <div className="routines">
-                        <div className="displayCard" key={routine.id}>
+                    <div key={routine.id} className="routines">
+                        <div className="displayCard">
                         <h1>{routine.name}</h1>
                         <h2>Goal: {routine.goal}</h2>
-                        <h2>Creator: {routine.creatorName}</h2>
+                        <h2>Creator: <Link onClick={()=> {
+                            setSeeUser(routine.creatorName)
+                        }}className="userLink" to="/routines/user">{routine.creatorName}</Link></h2>
                         <div className="activityCard">
                         <h2 >Activities: </h2>
                         {routine.activities.map((activity) => {

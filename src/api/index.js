@@ -168,3 +168,12 @@ export const editRoutine = async (routineId, name, goal, isPublic, token) => {
   const result = await response.json()
   return result
 }
+export const getPublicUserRoutines = async (username) => {
+  const response = await fetch(`${url}/users/${username}/routines`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  const result = await response.json();
+  return result
+}
