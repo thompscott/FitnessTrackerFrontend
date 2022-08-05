@@ -29,6 +29,7 @@ function CreateActivity(props) {
         <fieldset>
           <label htmlFor='name'>Name</label>
           <input
+            minLength={1}
             id="name"
             type="text"
             placeholder="Name"
@@ -40,6 +41,7 @@ function CreateActivity(props) {
         <fieldset>
           <label htmlFor='description'>Description</label>
           <input
+            minLength={1}
             id="description"
             type="text"
             placeholder="Description"

@@ -3,15 +3,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color:#8000A7;
+    color: #8000A7;
 }
+
+html {
+    height: 100vh;
+    background-color: #101010;
+}
+
 main {
     display: flex;
     flex-direction: column;
     background-color: #101010;
-    border-color:#8000A7;
+    border-color: #8000A7;
 
 }
+
 /*Header*/
 .header {
     display: flex;
@@ -27,11 +34,11 @@ main {
     font-size: 30px;
     border-right: solid #8000A7;
     color: #8000A7
-
 }
 
 .tab:hover {
-    background-color: red;
+    background-color: #8000A7;
+    color: #000000;
 }
 
 .currentUser {
@@ -43,6 +50,7 @@ main {
 
 
 }
+
 nav {
     display: flex;
     color: red;
@@ -63,6 +71,7 @@ nav {
     }
 
 }
+
 /*Forms*/
 form {
     border: solid #8000A7;
@@ -96,31 +105,37 @@ button {
     border: solid #954795 1px;
 
 }
+
 button:hover {
-    color:#954795;
+    color: #954795;
 
 }
+
 input {
     background-color: #954795;
     border: solid #954795 3x;
-    color:aliceblue;
+    color: aliceblue;
     display: inline-block;
 }
+
 ::placeholder {
     color: aliceblue;
     opacity: 0.6;
 }
+
 select {
     background-color: #954795;
     border: solid #954795 3x;
     color: aliceblue;
 }
+
 /*My Routines*/
 .myRoutines {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 /*Activities*/
 .displayCard {
     border: solid;
@@ -129,39 +144,69 @@ select {
     background-color: black;
     width: 80vw;
 }
+
 .displayCard>h1 {
     border-bottom: solid;
     padding: 5px;
 }
-.activityCard{
+
+.activityCard {
     border-top: solid;
     border-bottom: solid;
     margin-top: 5px;
     margin-bottom: 5px;
 
 }
-.activityCard>h2{
+
+.activityCard>h2 {
     text-decoration: underline;
 }
+
 ul {
     list-style-type: none;
     margin-left: 10px;
     text-decoration: none;
 }
+
 li {
     font-size: 18px;
 }
-.routines{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-.activities{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-.myRoutinesBttn{
+
+.routines {
     display: flex;
-    
+    flex-direction: column;
+    align-items: center;
+}
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myRoutinesBttn {
+    display: flex;
+
+}
+
+.homeScreen {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

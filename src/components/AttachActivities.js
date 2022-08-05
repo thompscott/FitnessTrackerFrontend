@@ -94,6 +94,7 @@ function AttachActivities(props) {
         <fieldset>
           <label htmlFor='count'>Count</label>
           <input
+            minLength={1}
             id='count'
             title="Count"
             type="text"
@@ -106,6 +107,7 @@ function AttachActivities(props) {
         <fieldset>
           <label htmlFor='duration'>Duration</label>
           <input
+            minLength={1}
             id="duration"
             title="Duration"
             type="text"

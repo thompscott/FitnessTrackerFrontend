@@ -39,6 +39,7 @@ function CreateRoutine(props) {
         <fieldset>
           <label htmlFor='name'>Name</label>
           <input
+            minLength={1}
             id='name'
             type="text"
             placeholder="Name"
@@ -50,6 +51,7 @@ function CreateRoutine(props) {
         <fieldset>
           <label htmlFor='goal'>Goal</label>
           <input
+            minLength={1}
             id="goal"
             type="text"
             placeholder="Goal"
