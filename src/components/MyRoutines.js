@@ -6,6 +6,7 @@ import {
 import { useState, useEffect } from "react";
 import React from "react";
 import { CreateRoutine, AttachActivities, EditRoutine } from "./index";
+import { Link } from "react-router-dom";
 
 function MyRoutines(props) {
   const [username, token] = [props.username, props.token];
@@ -42,7 +43,7 @@ function MyRoutines(props) {
                 return (
                   <div key={activity.id}>
                     <ul>
-                      <li>{activity.name}</li>
+                      <li><Link className="link" to={`/routines/activity/${activity.id}`}>{activity.name}</Link></li>
                       <ul>
                         <li>Description: {activity.description}</li>
                         <li>Count: {activity.count}</li>
