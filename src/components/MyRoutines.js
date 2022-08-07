@@ -1,8 +1,7 @@
 import {
   getUserRoutines,
   deleteRoutine,
-  deleteActivity,
-  editRoutine,
+  deleteActivity
 } from "../api";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -107,7 +106,6 @@ function MyRoutines(props) {
                   isPublic={routine.isPublic}
                   routineId={routine.id}
                 />
-                {console.log(modRout)}
               </>
             ) : null}
             {modEditAttAct === routine.id || modRout === routine.id ? null : (

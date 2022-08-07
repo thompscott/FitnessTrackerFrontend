@@ -82,7 +82,6 @@ function AttachActivities(props) {
                   Choose activity below
                 </option>
                 {activityList.map((activity) => {
-                  console.log(currActArr);
                   if(!currActArr.includes(activity.id)){
                     return(
                       <option key={activity.id} value={activity.id}>

@@ -1,18 +1,18 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getPublicUserRoutines } from "../api";
+import { getActivitityRoutines } from "../api";
 
-function UserRoutines () {
-    const { user } = useParams();
+function ActivityRoutines () {
+    const { activityId } = useParams();
     const [routines, setRoutines] = useState([]);
-    const userRout = async () => { 
-        const userRoutines = await getPublicUserRoutines(user);
-        setRoutines(userRoutines);
+    const actRout = async () => { 
+        const actRoutines = await getActivitityRoutines(activityId);
+        setRoutines(actRoutines);
       };
       useEffect(() => {
-        userRout();
-      }, [user]);
+        actRout();
+      }, [activityId]);
       
       return (
         <div className="myRoutines">
@@ -47,5 +47,4 @@ function UserRoutines () {
         </div>
       );
 }
-export default UserRoutines
-
+export default ActivityRoutines;
