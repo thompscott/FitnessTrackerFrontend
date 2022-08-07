@@ -6,7 +6,6 @@ import { Link, Route } from "react-router-dom";
 
 function Routines(props) {
     const [routines, setRoutines] = useState([]);
-    const [seeUser, setSeeUser] = [props.seeUser, props.setSeeUser];
 
     const pubRout = async () => {
         const allRoutines = await publicRoutines()
@@ -23,8 +22,7 @@ function Routines(props) {
                         <h1>{routine.name}</h1>
                         <h2>Goal: {routine.goal}</h2>
                         <h2>Creator: <Link onClick={()=> {
-                            setSeeUser(routine.creatorName)
-                        }}className="userLink" to="/routines/user">{routine.creatorName}</Link></h2>
+                        }}className="userLink" to={`/routines/${routine.creatorName}`}>{routine.creatorName}</Link></h2>
                         <div className="activityCard">
                         <h2 >Activities: </h2>
                         {routine.activities.map((activity) => {
@@ -41,10 +39,6 @@ function Routines(props) {
                         })}
                         </div>
                     </div>
-                    
-                        
-
-
                     </div>
                 )
             })}

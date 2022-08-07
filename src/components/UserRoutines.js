@@ -1,12 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getPublicUserRoutines, getUserRoutines } from "../api";
 
 function UserRoutines (props) {
-    const [username, token, seeUser] = [props.username, props.token, props.seeUser];
+    const { user } = useParams();
     const [routines, setRoutines] = useState([]);
-    const userRout = async () => {
-        const userRoutines = await getPublicUserRoutines(seeUser);
+    const userRout = async () => { 
+        const userRoutines = await getPublicUserRoutines(user);
         setRoutines(userRoutines);
       };
       useEffect(() => {
