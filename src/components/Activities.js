@@ -1,6 +1,7 @@
 import { getActivities } from "../api";
 import { useState, useEffect } from "react";
 import React from "react";
+import { Link } from "react-router-dom"
 import { CreateActivity } from "./index";
 
 
@@ -21,7 +22,7 @@ function Activities(props) {
             {activities.map((activity) => {
                 return (
                     <div className="displayCard" key={activity.id}>
-                        <h1>{activity.name}</h1>
+                        <h1><Link className="link" to={`/routines/activity/${activity.id}`}>{activity.name}</Link></h1>
                         <h2>{activity.description}</h2>
                     </div>
                 )

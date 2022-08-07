@@ -1,8 +1,7 @@
 import {
   getUserRoutines,
   deleteRoutine,
-  deleteActivity,
-  editRoutine,
+  deleteActivity
 } from "../api";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -30,6 +29,7 @@ function MyRoutines(props) {
     <div className="myRoutines">
       <CreateRoutine token={token} setModifyRoutine={setModifyRoutine} />
       {routines.map((routine) => {
+        let currActArr = [];
         return (
           <div className="displayCard" key={routine.id}>
             <h1>{routine.name}</h1>
@@ -38,6 +38,7 @@ function MyRoutines(props) {
             <div className="activityCard">
               <h2>Activities:</h2>
               {routine.activities.map((activity) => {
+                currActArr.push(activity.id);
                 return (
                   <div key={activity.id}>
                     <ul>
@@ -59,6 +60,7 @@ function MyRoutines(props) {
                         activityId={activity.id}
                         routineActivityId={activity.routineActivityId}
                         token={token}
+                        currActArr={currActArr}
                       />
                     ) : (
                       <div>
@@ -91,6 +93,7 @@ function MyRoutines(props) {
               <AttachActivities
                 setModEditAttAct={setModEditAttAct}
                 routineId={routine.id}
+                currActArr={currActArr}
               />
             ) : null}
             {modRout === routine.id ? (
@@ -103,7 +106,6 @@ function MyRoutines(props) {
                   isPublic={routine.isPublic}
                   routineId={routine.id}
                 />
-                {console.log(modRout)}
               </>
             ) : null}
             {modEditAttAct === routine.id || modRout === routine.id ? null : (

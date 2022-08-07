@@ -10,13 +10,14 @@ function AttachActivities(props) {
   const [message, setMessage] = useState("");
   const [activityList, setActivityList] = useState([]);
   const [activityId, setActivityId] = useState("");
-  const [routineId, setModEditAttAct, modEditAttAct, routineActivityId, token] =
+  const [routineId, setModEditAttAct, modEditAttAct, routineActivityId, token, currActArr] =
     [
       props.routineId,
       props.setModEditAttAct,
       props.modEditAttAct,
       props.routineActivityId,
       props.token,
+      props.currActArr
     ];
 
   async function setAllActs() {
@@ -80,11 +81,16 @@ function AttachActivities(props) {
                 <option value="Choose activity below">
                   Choose activity below
                 </option>
-                {activityList.map((activity) => (
-                  <option key={activity.id} value={activity.id}>
-                    {activity.name}
-                  </option>
-                ))}
+                {activityList.map((activity) => {
+                  if(!currActArr.includes(activity.id)){
+                    return(
+                      <option key={activity.id} value={activity.id}>
+                      {activity.name}
+                    </option>
+                    )
+                  }
+                  
+                })}
               </select>
             </fieldset>
           </div>
